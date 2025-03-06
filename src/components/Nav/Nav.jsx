@@ -1,9 +1,17 @@
 import React from 'react'
+import UopLogo from '../../assets/uoplogo.png'
 
 const Nav = () => {
   return (
-    <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus modi a rem! At hic sequi numquam soluta aspernatur ab, incidunt adipisci laudantium aliquam voluptatem necessitatibus, natus recusandae, omnis unde voluptatibus.
+    <div className='md:px-16 px-2 bg-[#560606] py-4 text-[#e8b910]'>
+        <div className="flex justify-between">
+            <div className="">
+                <img src={UopLogo} alt="" className='xl:h-12 h-12 w-auto'/>
+            </div>
+            <div className="text-2xl font-semibold text-xl mt-2">
+                Staff Login
+            </div>
+        </div> 
     </div>
   )
 }

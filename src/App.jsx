@@ -45,7 +45,7 @@ export default function App() {
             showNavBar ? "translate-y-0" : "-translate-y-full"
           } ${
             isTopOfPage
-              ? "xl:mt-2"
+              ? "xl:mt-0"
               : "shadow-md transition-colors duration-500"
           }`}
           >
