@@ -3,8 +3,10 @@ import DefultInput from '../../components/Forms/DefultInput'
 import Defaultbtn from '../../components/Button/Defaultbtn'
 import axios from 'axios'
 import secureLocalStorage  from 'react-secure-storage'
+import { useNavigate } from 'react-router-dom'
 
 const StaffLogin = () => {
+    const navigate = useNavigate()
     const [logindata, setlogindata] = useState({
         email: '',
         password: '',
@@ -27,8 +29,10 @@ const StaffLogin = () => {
             if(res.data.Status === "Success"){
                 alert(res.data.message)
                 localStorage.setItem("login", res.data.token)
-                secureLocalStorage.setItem("email", res.data.)
-
+                secureLocalStorage.setItem("email", res.data.email)
+                localStorage.setItem("dashmenuID", 1)
+                navigate('/Dashboard/home')
+                window.location.reload()
             }
             else{
                 alert(res.data.error)
