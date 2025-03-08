@@ -38,7 +38,7 @@ const DashNav = () => {
     <div className='bg-white py-8 shadow-md'>
         <div className="flex justify-between mr-4 pl-8">
             <div className="w-full">
-                <h1 className="uppercase font-semibold text-[#a4805a] mt-1">Dashboard</h1>
+                <h1 className="uppercase font-semibold text-[#560606] mt-1">Dashboard</h1>
             </div>
             <div className="">
                 <div className="flex xl:mr-4 md:mr-20 mr-20 cursor-pointer" onClick={toggleMenu}>
@@ -47,7 +47,7 @@ const DashNav = () => {
                         alt="User Image" 
                         className="h-8 w-auto rounded-full" 
                     /> */}
-                    <div className="flex pl-4 pt-1 uppercase text-[#a4805a]">
+                    <div className="flex pl-4 pt-1 uppercase text-[#560606]">
                         {Username}
 
                         <div className="pl-1 pt-1">
@@ -66,7 +66,7 @@ const DashNav = () => {
         <div className={`absolute bg-white right-4 top-24 py-4 px-8 mt-1 rounded shadow-xl 
                         transition-all duration-300 transform 
                         ${menu ? 'opacity-100 scale-100 pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none'}`}>
-            <div onClick={healdeLogout} className="cursor-pointer flex"><FaPowerOff className='h-6 w-auto fill-[#a4805a]'/> <p className='pl-2 uppercase text-[#a4805a]'>Logout</p></div>
+            <div onClick={healdeLogout} className="cursor-pointer flex"><FaPowerOff className='h-6 w-auto fill-[#560606]'/> <p className='pl-2 uppercase text-[#560606]'>Logout</p></div>
         </div>
 
     </div>

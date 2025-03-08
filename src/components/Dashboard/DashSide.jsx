@@ -35,9 +35,9 @@ const DashSide = () => {
     <div className="w-full">
       <div className="flex ml-4">
         <div className="pt-3 pr-2">
-          <FaHotel className="h-8 w-auto fill-[#a4805a]" />
+          <FaHotel className="h-8 w-auto fill-[#560606]" />
         </div>
-        <h1 className="my-4 text-center font-semibold uppercase text-xl bg-[#a4805a] bg-clip-text text-transparent">
+        <h1 className="my-4 text-center font-semibold uppercase text-xl bg-[#560606] bg-clip-text text-transparent">
           MyHotels
         </h1>
       </div>
@@ -51,8 +51,7 @@ const DashSide = () => {
             /> */}
         </div>
         <div className="mt-4 pl-4">
-          <p className="uppercase text-gray-500">{Username}</p>
-          <h1 className="text-sm uppercase font-semibold text-[#a4805a]">
+          <h1 className="text-sm uppercase font-semibold text-[#560606]">
             {RoleUser}
           </h1>
         </div>
@@ -66,8 +65,8 @@ const DashSide = () => {
                     onClick={() => currentMenu(menu.id)}
                     className={`py-4 pl-4 cursor-pointer duration-500 flex items-center ${
                     isActive
-                        ? "text-[#a4805a] font-semibold"
-                        : "text-gray-400 hover:pl-6 hover:text-[#a4805a]"
+                        ? "text-[#560606] font-semibold"
+                        : "text-gray-400 hover:pl-6 hover:text-[#560606]"
                     }`}
                 >
                     <menu.icon className="h-8 w-auto" />
