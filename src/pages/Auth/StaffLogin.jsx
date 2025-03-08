@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import DefultInput from '../../components/Forms/DefultInput'
 import Defaultbtn from '../../components/Button/Defaultbtn'
+import axios from 'axios'
+import secureLocalStorage  from 'react-secure-storage'
 
 const StaffLogin = () => {
     const [logindata, setlogindata] = useState({
@@ -20,7 +22,17 @@ const StaffLogin = () => {
         e.preventDefault()
 
         try{
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/login.php')
             
+            if(res.data.Status === "Success"){
+                alert(res.data.message)
+                localStorage.setItem("login", res.data.token)
+                secureLocalStorage.setItem("email", res.data.)
+
+            }
+            else{
+                alert(res.data.error)
+            }
         }
         catch(err){
             console.log(err)
