@@ -23,23 +23,22 @@ const StaffLogin = () => {
     const headleSubmit = async (e) => {
         e.preventDefault()
 
-        try{
-            const res = await axios.post(import.meta.env.VITE_APP_API + '/login.php')
-            
-            if(res.data.Status === "Success"){
-                alert(res.data.message)
-                localStorage.setItem("login", res.data.token)
-                secureLocalStorage.setItem("email", res.data.email)
-                localStorage.setItem("dashmenuID", 1)
-                navigate('/Dashboard/home')
-                window.location.reload()
+        try {
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/login.php`, logindata);
+
+            if (res.data.Status === "Success") {
+                alert(res.data.message);
+                localStorage.setItem("token", res.data.token);
+                secureLocalStorage.setItem("email", res.data.email);
+                localStorage.setItem("dashmenuID", 1);
+                navigate('/Dashboard/home');
+                window.location.reload();
+            } else {
+                alert(res.data.error || "Invalid credentials");
             }
-            else{
-                alert(res.data.error)
-            }
-        }
-        catch(err){
-            console.log(err)
+        } catch (err) {
+            alert(err.response?.data?.error || "Something went wrong");
+            console.error(err);
         }
     }
     
