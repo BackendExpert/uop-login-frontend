@@ -5,6 +5,8 @@ import 'aos/dist/aos.css';
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import StaffLogin from "./pages/Auth/StaffLogin";
 import Nav from "./components/Nav/Nav";
+import Dashbaord from "./components/Dashboard/Dashbaord";
+import DashHome from "./pages/Dashboard/DashHome";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -55,6 +57,10 @@ export default function App() {
         <Routes>
           <Route path="*" element={<ErrorPage /> } />
           <Route path="/" element={<StaffLogin /> } />
+          
+          <Route path="/Dashboard/" element={<Dashbaord /> } >
+            <Route path="Home" element={<DashHome /> } />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
