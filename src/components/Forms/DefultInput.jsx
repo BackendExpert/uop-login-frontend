@@ -11,7 +11,13 @@ const DefultInput = ({ type, name, value, onChange, required, placeholder }) => 
         required={!!required}
         className='
             w-full h-12
-            pl-2
+            pl-2 mt-2
+            border border-gray-300
+            rounded
+            duration-500 
+            focus:outline-none 
+            focus:border-[#560606]
+            placeholder:text-[#560606]
         '
     />
   )
