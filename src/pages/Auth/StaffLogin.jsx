@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 const StaffLogin = () => {
     const navigate = useNavigate()
     const [logindata, setlogindata] = useState({
+        action: 'login',
         email: '',
         password: '',
     })
@@ -24,17 +25,19 @@ const StaffLogin = () => {
         e.preventDefault()
 
         try {
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}/login.php`, logindata);
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/auth.php`, logindata);
 
-            if (res.data.Status === "Success") {
+            if (res.data.status === "Success") {
                 alert(res.data.message);
                 localStorage.setItem("token", res.data.token);
                 secureLocalStorage.setItem("email", res.data.email);
                 localStorage.setItem("dashmenuID", 1);
                 navigate('/Dashboard/home');
                 window.location.reload();
+                
             } else {
                 alert(res.data.error || "Invalid credentials");
+                console.log("Response:", res.data);
             }
         } catch (err) {
             alert(err.response?.data?.error || "Something went wrong");

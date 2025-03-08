@@ -48,7 +48,7 @@ const DashNav = () => {
                         className="h-8 w-auto rounded-full" 
                     /> */}
                     <div className="flex pl-4 pt-1 uppercase text-[#560606]">
-                        {Username}
+                        admin
 
                         <div className="pl-1 pt-1">
                             {
