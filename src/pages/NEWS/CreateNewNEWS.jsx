@@ -30,7 +30,7 @@ const CreateNewEvent = () => {
         const file = e.target.files[0];
         setnewsdata((prevData) => ({
             ...prevData,
-            eventImg: file,
+            newsImg: file,
         }));
     };
 
