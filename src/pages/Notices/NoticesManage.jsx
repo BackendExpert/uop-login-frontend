@@ -1,7 +1,31 @@
-import React from 'react'
-import { BsMegaphoneFill  } from "react-icons/bs";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { BsCalendar3EventFill, BsMegaphoneFill, BsNewspaper } from "react-icons/bs";
 
 const NoticesManage = () => {
+    const [noticedata, setnoticedata] = useState([])
+
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/notice.php', {
+            params: { action: "getallNotice" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setnoticedata(res.data.Result);
+            } else {
+                setnoticedata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setnoticedata([]); 
+        });
+    }, []);
+    
+
+
   return (
     <div className='mt-4'>
         <div className="flex">
@@ -18,7 +42,7 @@ const NoticesManage = () => {
         <div className="mt-4">
             <a href="/Dashboard/CreateNotice">
                 <button className='bg-gradient-to-r from-[#ff7e60] to-[#ffc27c] px-8 py-2 text-white rounded duration-500'>
-                    Create New Event
+                    Create New Notice
                 </button>
             </a>
         </div>
@@ -34,22 +58,22 @@ const NoticesManage = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* {
-                        Array.isArray(eventdata) && eventdata.length > 0 ? (
-                            eventdata.map((event, index) => (
+            {
+                        Array.isArray(noticedata) && noticedata.length > 0 ? (
+                            noticedata.map((notice, index) => (
                                 <tr key={index} className='w-full h-16 text-center'>
                                     <td>{index + 1}</td>    
-                                    <td>{event.event_title}</td>
-                                    <td>{event.event_date}</td>
-                                    <td><a href={`/Dashboard/ViewEvent/${event.event_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
+                                    <td>{notice.notice_title}</td>
+                                    <td>{notice.notice_date}</td>
+                                    <td><a href={`/Dashboard/ViewNotice/${notice.notice_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="4" className="text-center">No events available</td>
+                                <td colSpan="4" className="text-center">No news available</td>
                             </tr>
                         )
-                    } */}
+                    }
             </tbody>
         </table>
     </div>

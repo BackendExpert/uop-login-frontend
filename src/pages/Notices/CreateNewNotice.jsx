@@ -10,12 +10,11 @@ import { useNavigate } from 'react-router-dom';
 const CreateNewNotice = () => {
     const navigate = useNavigate();
     const [noticedata, setnoticedata] = useState({
-        action: 'createEvent',
+        action: 'createnotice',
         noticeName: '',
-        eventImg: null,
-        eventDesc: '',
-        eventLink: '',
-        eventDate: '',
+        noticeDesc: '',
+        noticeLink: '',
+        noticeDate: '',
     });
 
     const handleInputChange = (e) => {
@@ -26,36 +25,21 @@ const CreateNewNotice = () => {
         }));
     };
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0];
-        setnoticedata((prevData) => ({
-            ...prevData,
-            eventImg: file,
-        }));
-    };
 
     const headleCreateNotice = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        
-        Object.keys(eventdata).forEach((key) => {
-            if (key === "eventImg" && eventdata[key]) {
-                formData.append(key, eventdata[key]);
-            } else {
-                formData.append(key, eventdata[key]);
-            }
-        });
+
     
         try {
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}/event.php`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/notice.php`, noticedata, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
     
             console.log("Server Response:", res.data); // Detailed log
     
             if (res.data.Status === "Success") {
-                alert("New Event Created Successfully");
-                navigate('/Dashboard/Events');
+                alert("New Notice Created Successfully");
+                navigate('/Dashboard/Notice');
             } else {
                 console.error("Error Details:", res.data); // Detailed error log
                 alert(res.data.error || "Unknown error occurred");
@@ -77,12 +61,12 @@ const CreateNewNotice = () => {
                     </div>
                 </div>
                 <div className="pl-4">
-                    <h1 className="text-[#560606] text-xl pt-1 font-semibold uppercase">Create New Event</h1>
+                    <h1 className="text-[#560606] text-xl pt-1 font-semibold uppercase">Create New Notice</h1>
                 </div>
             </div>
 
             <div className="mt-4">
-                <a href="/Dashboard/Events">
+                <a href="/Dashboard/Notice">
                     <button className="bg-gradient-to-r from-[#ff7e60] to-[#ffc27c] px-8 py-2 text-white rounded duration-500">
                         Back
                     </button>
@@ -93,56 +77,47 @@ const CreateNewNotice = () => {
                 <form onSubmit={headleCreateNotice} method="post">
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <p>Event Name</p>
+                            <p>Notice Name</p>
                             <DefultInput 
                                 type="text"
-                                name="eventName"
-                                value={eventdata.eventName}
+                                name="noticeName"
+                                value={noticedata.noticeName}
                                 onChange={handleInputChange}
                                 required
-                                placeholder="Event Name"
-                            />
-                        </div>
-                        <div>
-                            <p>Event Image</p>
-                            <FileInput 
-                                name="eventImg"
-                                accept="image/*"
-                                required
-                                onChange={handleImageChange}
+                                placeholder="Notice Name"
                             />
                         </div>
                     </div>
 
                     <div className="mt-4">
-                        <p>Event Description</p>
+                        <p>Notice Description</p>
                         <DashTextArea 
-                            name="eventDesc"
-                            value={eventdata.eventDesc}
+                            name="noticeDesc"
+                            value={noticedata.noticeDesc}
                             required
-                            placeholder="Event Description"
+                            placeholder="Notice Description"
                             onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <p>Event Link</p>
+                            <p>Notice Link</p>
                             <DefultInput 
                                 type="text"
-                                name="eventLink"
-                                value={eventdata.eventLink}
+                                name="noticeLink"
+                                value={noticedata.noticeLink}
                                 onChange={handleInputChange}
                                 required
-                                placeholder="Event Link"
+                                placeholder="Notice Link"
                             />
                         </div>
                         <div>
-                            <p>Event Date</p>
+                            <p>Notice Date</p>
                             <DefultInput 
                                 type="date"
-                                name="eventDate"
-                                value={eventdata.eventDate}
+                                name="noticeDate"
+                                value={noticedata.noticeDate}
                                 onChange={handleInputChange}
                                 required
                             />
@@ -151,7 +126,7 @@ const CreateNewNotice = () => {
 
                     <div className="mt-8">
                         <Defaultbtn 
-                            btnvalue="Create New Event"
+                            btnvalue="Create New Notice"
                             type="Submit"
                         />
                     </div>

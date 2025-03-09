@@ -79,6 +79,31 @@ const CardDashboard = () => {
     }, []);
 
 
+    // count Notices
+
+    const [noticedata, setnoticedata] = useState([]);
+
+    const noticecount = noticedata.length;
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/notice.php', {
+            params: { action: "getallNotice" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setnoticedata(res.data.Result);
+            } else {
+                setnoticedata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setnoticedata([]); 
+        });
+    }, []);
+
+
 
     const admindata = [
         {
@@ -109,7 +134,7 @@ const CardDashboard = () => {
             id: 4,
             name: 'Notices',
             icon: BsMegaphoneFill,
-            value: 500,
+            value: noticecount,
             bgstyle: 'bg-gradient-to-r from-[#ff7e60] to-[#ffc27c]'
         },
 

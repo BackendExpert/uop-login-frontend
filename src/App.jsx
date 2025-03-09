@@ -19,6 +19,7 @@ import CreateNewNEWS from "./pages/NEWS/CreateNewNEWS";
 import CreateNewResearch from "./pages/Research/CreateNewResearch";
 import ViewNEWS from "./pages/NEWS/ViewNEWS";
 import ViewResearch from "./pages/Research/ViewResearch";
+import ViewNotice from "./pages/Notices/ViewNotice";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -77,6 +78,7 @@ export default function App() {
             <Route path="ViewEvent/:id" element={<ViewEvent /> } />
             <Route path="Notice" element={<NoticesManage /> } />
             <Route path="CreateNotice" element={<CreateNewNotice /> } />
+            <Route path="ViewNotice/:id" element={<ViewNotice /> } />
             <Route path="NEWS" element={<NEWSManage /> } />
             <Route path="CreateNEWS" element={<CreateNewNEWS /> } />
             <Route path="ViewNEWS/:id" element={<ViewNEWS /> } />
