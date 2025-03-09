@@ -3,26 +3,26 @@ import React, { useEffect, useState } from 'react'
 import { BsCalendar3EventFill, BsNewspaper } from "react-icons/bs";
 
 const NEWSManage = () => {
-    // const [eventdata, setdataevet] = useState([])
+    const [newsdata, setnewsdata] = useState([])
 
-    // useEffect(() => {
-    //     axios.get(import.meta.env.VITE_APP_API + '/event.php', {
-    //         params: { action: "getallEvents" },  
-    //         headers: { 'Content-Type': 'multipart/form-data' },
-    //     })
-    //     .then(res => {
-    //         console.log(res.data);
-    //         if (res.data.Result) {
-    //             setdataevet(res.data.Result);
-    //         } else {
-    //             setdataevet([]);  
-    //         }
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         setdataevet([]); 
-    //     });
-    // }, []);
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/news.php', {
+            params: { action: "getallNEWS" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setnewsdata(res.data.Result);
+            } else {
+                setnewsdata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setnewsdata([]); 
+        });
+    }, []);
     
 
 
@@ -58,22 +58,22 @@ const NEWSManage = () => {
                 </tr>
             </thead>
             <tbody>
-            {/* {
-                        Array.isArray(eventdata) && eventdata.length > 0 ? (
-                            eventdata.map((event, index) => (
+            {
+                        Array.isArray(newsdata) && newsdata.length > 0 ? (
+                            newsdata.map((news, index) => (
                                 <tr key={index} className='w-full h-16 text-center'>
                                     <td>{index + 1}</td>    
-                                    <td>{event.event_title}</td>
-                                    <td>{event.event_date}</td>
-                                    <td><a href={`/Dashboard/ViewEvent/${event.event_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
+                                    <td>{news.news_title}</td>
+                                    <td>{news.news_date}</td>
+                                    <td><a href={`/Dashboard/V/${news.id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
                                 </tr>
                             ))
                         ) : (
                             <tr>
-                                <td colSpan="4" className="text-center">No events available</td>
+                                <td colSpan="4" className="text-center">No news available</td>
                             </tr>
                         )
-                    } */}
+                    }
             </tbody>
         </table>
     </div>
