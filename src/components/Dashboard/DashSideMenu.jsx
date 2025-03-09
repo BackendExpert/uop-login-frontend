@@ -1,67 +1,35 @@
-import { BiSolidDashboard } from "react-icons/bi";
-import { BsGearFill } from "react-icons/bs";
-import { MdOutlineDryCleaning  } from "react-icons/md";
-import { FaBed, FaPeopleGroup, FaUsers   } from "react-icons/fa6";
-import { BsCalendar2CheckFill } from "react-icons/bs";
-import { RiSecurePaymentLine } from "react-icons/ri";
-import { TbReportAnalytics } from "react-icons/tb";
-
-
+import { BsCalendar3EventFill , BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill, BsFillGrid1X2Fill  } from "react-icons/bs";
 
 const sidemenu = [
     {
         id: 1,
         name: "Dashboard",
-        icon: BiSolidDashboard,
+        icon: BsFillGrid1X2Fill,
         link: '/Dashboard/Home'
     },
     {
         id: 2,
-        name: "Room Management",
-        icon: FaBed,
-        link: '/Dashboard/Rooms'
+        name: "Event Management",
+        icon: BsCalendar3EventFill,
+        link: '/Dashboard/Events'
     },
     {
         id: 3,
-        name: "Booking Management",
-        icon: BsCalendar2CheckFill,
-        link: '#'
+        name: "Notice Management",
+        icon: BsMegaphoneFill,
+        link: '/Dashboard/Notice'
     },
     {
         id: 4,
-        name: "Guest Management",
-        icon: FaPeopleGroup,
-        link: '#'
+        name: "NEWS Management",
+        icon: BsNewspaper,
+        link: '/Dashboard/NEWS'
     },
     {
         id: 5,
-        name: "Staff Management",
-        icon: FaUsers,
-        link: '#'
-    },
-    {
-        id: 6,
-        name: "Housekeeping",
-        icon: MdOutlineDryCleaning,
-        link: '#'
-    },
-    {
-        id: 7,
-        name: "Payments & Transactions",
-        icon: RiSecurePaymentLine,
-        link: '#'
-    },
-    {
-        id: 8,
-        name: "Reports & Analytics",
-        icon: TbReportAnalytics,
-        link: '#'
-    },
-    {
-        id: 9,
-        name: "Settings",
-        icon: BsGearFill,
-        link: '#'
+        name: "Research Management",
+        icon: BsJournalBookmarkFill,
+        link: '/Dashboard/Research'
     },
 ]
 

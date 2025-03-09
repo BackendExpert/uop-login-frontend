@@ -29,7 +29,7 @@ const StaffLogin = () => {
 
             if (res.data.status === "Success") {
                 alert(res.data.message);
-                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("login", res.data.token);
                 secureLocalStorage.setItem("email", res.data.email);
                 localStorage.setItem("dashmenuID", 1);
                 navigate('/Dashboard/home');

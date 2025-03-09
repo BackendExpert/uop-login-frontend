@@ -6,7 +6,6 @@ import axios from 'axios';
 import userImg from '../../assets/user.png'
 
 const DashNav = () => {
-    const Username = secureLocalStorage.getItem('loginU')
     const EmailUser = secureLocalStorage.getItem('email')
 
     const [menu, setmenu] = useState(false)

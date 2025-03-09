@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import { sidemenu } from "./DashSideMenu";
 import { Link } from "react-router-dom";
-import userImg from '../../assets/user.png'
+import uoplogo from '../../assets/uoplogo.png'
 import axios from "axios";
 import { FaHotel } from "react-icons/fa6";
 
 
 const DashSide = () => {
-  const RoleUser = secureLocalStorage.getItem("loginR");
   const EmailUser = secureLocalStorage.getItem("email");
 
   const currentID = localStorage.getItem("dashmenuID") || "";
@@ -35,11 +34,8 @@ const DashSide = () => {
     <div className="w-full">
       <div className="flex ml-4">
         <div className="pt-3 pr-2">
-          <FaHotel className="h-8 w-auto fill-[#560606]" />
+          <img src={uoplogo} alt="" />
         </div>
-        <h1 className="my-4 text-center font-semibold uppercase text-xl bg-[#560606] bg-clip-text text-transparent">
-          MyHotels
-        </h1>
       </div>
 
       <div className="flex px-4">
@@ -52,7 +48,7 @@ const DashSide = () => {
         </div>
         <div className="mt-4 pl-4">
           <h1 className="text-sm uppercase font-semibold text-[#560606]">
-            {RoleUser}
+            admin
           </h1>
         </div>
       </div>
@@ -60,19 +56,21 @@ const DashSide = () => {
       <div className="mt-4">
         {sidemenu.map((menu, index) => {
           const isActive = currentID === String(menu.id); // Ensure comparison works
-            <Link to={menu.link} key={menu.id}>
-                <div
-                    onClick={() => currentMenu(menu.id)}
-                    className={`py-4 pl-4 cursor-pointer duration-500 flex items-center ${
-                    isActive
-                        ? "text-[#560606] font-semibold"
-                        : "text-gray-400 hover:pl-6 hover:text-[#560606]"
-                    }`}
-                >
-                    <menu.icon className="h-8 w-auto" />
-                    <h1 className="pt-1 pl-4">{menu.name}</h1>
-                </div>
-            </Link>
+            return(
+                <Link to={menu.link} key={menu.id}>
+                    <div
+                        onClick={() => currentMenu(menu.id)}
+                        className={`py-4 pl-4 cursor-pointer duration-500 flex items-center ${
+                        isActive
+                            ? "text-[#560606] font-semibold"
+                            : "text-gray-400 hover:pl-6 hover:text-[#560606]"
+                        }`}
+                    >
+                        <menu.icon className="h-8 w-auto" />
+                        <h1 className="pt-1 pl-4">{menu.name}</h1>
+                    </div>
+                </Link>
+            )
         })}
       </div>
     </div>

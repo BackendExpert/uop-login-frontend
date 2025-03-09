@@ -11,7 +11,6 @@ import { MdOutlineClose } from "react-icons/md";
 
 const Dashbaord = () => {
     const navigate = useNavigate()
-    const RoleUser = secureLocalStorage.getItem('loginR')
     const EmailUser = secureLocalStorage.getItem('email')
 
     const [openside, setopenside] = useState(false);
@@ -21,7 +20,7 @@ const Dashbaord = () => {
     }
 
 
-    if(RoleUser !== "" || EmailUser !== ""){
+    if(EmailUser !== ""){
         return (
             <div className='w-full bg-[#e0e1df]/50 min-h-screen'>
                 <div className="xl:flex">
