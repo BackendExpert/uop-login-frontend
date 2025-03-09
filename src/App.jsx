@@ -13,6 +13,10 @@ import CreateNewEvent from "./pages/Events/CreateNewEvent";
 import ViewEvent from "./pages/Events/ViewEvent";
 import NoticesManage from "./pages/Notices/NoticesManage";
 import CreateNewNotice from "./pages/Notices/CreateNewNotice";
+import NEWSManage from "./pages/NEWS/NEWSManage";
+import ResearchManage from "./pages/Research/ResearchManage";
+import CreateNewNEWS from "./pages/NEWS/CreateNewNEWS";
+import CreateNewResearch from "./pages/Research/CreateNewResearch";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -71,8 +75,12 @@ export default function App() {
             <Route path="ViewEvent/:id" element={<ViewEvent /> } />
             <Route path="Notice" element={<NoticesManage /> } />
             <Route path="CreateNotice" element={<CreateNewNotice /> } />
+            <Route path="NEWS" element={<NEWSManage /> } />
+            <Route path="CreateNEWS" element={<CreateNewNEWS /> } />
+            <Route path="Research" element={<ResearchManage /> } />
+            <Route path="CreateResearch" element={<CreateNewResearch /> } />
           </Route>
-        </Routes>
+         </Routes>
         {shouldShowFooter && <Footer />}
       </BrowserRouter>
   )
