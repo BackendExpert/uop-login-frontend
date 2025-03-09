@@ -1,17 +1,33 @@
 import React, { useState } from 'react'
 import { BsPlus } from 'react-icons/bs'
+import DefultInput from '../../components/Forms/DefultInput'
+import FileInput from '../../components/Forms/FileInput'
 
 
 const CreateNewEvent = () => {
     const [eventdata, seteventdata] = useState({
-        eventID: '',
         envetName: '',
         eventImg: '',
         eventDesc: '',
         eventLink: '',
         eventData: '',
     })
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        seteventdata((prevData) => ({
+          ...prevData,
+          [name]: value
+        }));
+    };
 
+    
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setroomdata((prevData) => ({
+            ...prevData,
+            image: file
+        }));
+    };
 
   return (
     <div className='mt-4'>
@@ -35,7 +51,35 @@ const CreateNewEvent = () => {
         </div>
 
         <div className="my-8">
-            <form method="post"></form>
+            <form method="post">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="">
+                        <p className="">Event Name</p>
+                        <div className="">
+                            <DefultInput 
+                                type={'text'}
+                                name={'envetName'}
+                                value={eventdata.envetName}
+                                onChange={handleInputChange}
+                                required={true}
+                                placeholder={"Event Name"}
+                            />
+                        </div>
+                    </div>
+                    <div className="">
+                        <p className="">Event Name</p>
+                        <div className="mt-2">
+                            <FileInput 
+                                name={'img'}
+                                accept={'image/*'}
+                                required={true}
+                                onChange={handleImageChange}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+            </form>
         </div>
 
 
