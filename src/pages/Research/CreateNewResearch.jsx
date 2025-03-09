@@ -54,8 +54,8 @@ const CreateNewResearch = () => {
             console.log("Server Response:", res.data); // Detailed log
     
             if (res.data.Status === "Success") {
-                alert("New NEWS Created Successfully");
-                navigate('/Dashboard/NEWS');
+                alert("New Research Created Successfully");
+                navigate('/Dashboard/Research');
             } else {
                 console.error("Error Details:", res.data); // Detailed error log
                 alert(res.data.error || "Unknown error occurred");
