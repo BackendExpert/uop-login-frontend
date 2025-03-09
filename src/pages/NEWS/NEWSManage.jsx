@@ -65,7 +65,7 @@ const NEWSManage = () => {
                                     <td>{index + 1}</td>    
                                     <td>{news.news_title}</td>
                                     <td>{news.news_date}</td>
-                                    <td><a href={`/Dashboard/V/${news.id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
+                                    <td><a href={`/Dashboard/ViewNEWS/${news.id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
                                 </tr>
                             ))
                         ) : (
