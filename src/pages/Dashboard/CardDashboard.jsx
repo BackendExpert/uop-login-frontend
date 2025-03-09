@@ -1,4 +1,5 @@
 import React from 'react'
+import CountUp from 'react-countup';
 import { BsCalendar3EventFill , BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill  } from "react-icons/bs";
 
 const CardDashboard = () => {
@@ -37,7 +38,33 @@ const CardDashboard = () => {
 
     ]
   return (
-    <div>CardDashboard</div>
+    <div>
+        <div className="mt-4">
+            <div className="grid xl:grid-cols-4 md:grid-cols-2 gap-6">
+                {
+                    admindata.map((data, index) => {
+                        return (
+                            <div className={`${data.bgstyle} text-white rounded-md shadow-xl py-8 px-4`} key={index}>
+                                <div className="flex justify-between">
+                                    <div className="">
+                                        <h1 className="text-2xl">                                            
+                                            <CountUp end={data.value} duration={5}/> + 
+                                        </h1>
+                                        <h1 className="font-semibold">{data.name}</h1>
+                                    </div>
+
+                                    <div className="">
+                                        <data.icon className='h-12 w-auto'/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        )
+                    })
+                }
+            </div>
+        </div>
+    </div>
   )
 }
 

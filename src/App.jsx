@@ -63,7 +63,7 @@ export default function App() {
             <Route path="Home" element={<DashHome /> } />
           </Route>
         </Routes>
-        <Footer />
+        {shouldShowFooter && <Footer />}
       </BrowserRouter>
   )
 }

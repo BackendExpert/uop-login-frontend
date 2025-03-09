@@ -46,7 +46,7 @@ const Dashbaord = () => {
                         <div className="xl:-ml-6">
                             <DashNav />
                         </div>
-                        <div className="xl:ml-0 ml-4">
+                        <div className="xl:ml-0 ml-4 mr-4">
                             <Outlet />
                         </div>
                         <div className="xl:ml-0 ml-4">

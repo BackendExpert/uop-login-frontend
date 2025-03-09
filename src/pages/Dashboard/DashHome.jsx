@@ -1,5 +1,6 @@
 import React from 'react'
 import { BsFillGrid1X2Fill  } from "react-icons/bs";
+import CardDashboard from './CardDashboard';
 
 const DashHome = () => {
   return (
@@ -15,7 +16,11 @@ const DashHome = () => {
             </div>
         </div>
 
-        
+        <div className="">
+            <CardDashboard />
+        </div>
+
+
     </div>
   )
 }
