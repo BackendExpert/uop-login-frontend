@@ -1,14 +1,39 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import CountUp from 'react-countup';
 import { BsCalendar3EventFill , BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill  } from "react-icons/bs";
 
+
 const CardDashboard = () => {
+    // count Envets
+    const [eventdata, setdataevet] = useState([]);
+
+    const eventCount = eventdata.length;
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/event.php', {
+            params: { action: "getallEvents" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setdataevet(res.data.Result);
+            } else {
+                setdataevet([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setdataevet([]); 
+        });
+    }, []);
+
     const admindata = [
         {
             id: 1,
             name: 'Events',
             icon: BsCalendar3EventFill,
-            value: 500,
+            value: eventCount,
             bgstyle: 'bg-gradient-to-r from-[#59bdff] to-[#59d1ff]'
         },
 
