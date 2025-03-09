@@ -47,7 +47,7 @@ const CreateNewResearch = () => {
         });
     
         try {
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}/news.php`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/research.php`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
     
