@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { FaEdit } from "react-icons/fa";
 import axios from 'axios';
+import UpdateEvent from './UpdateEvent';
 
 
 const ViewEvent = () => {
@@ -77,6 +78,11 @@ const ViewEvent = () => {
                     {/* {eventdata.event_img} */}
                     <img src={`${import.meta.env.VITE_APP_API}/${eventdata.event_img}`} alt="" className='h-40 w-auto mt-2'/>
                 </div>
+            </div>
+
+
+            <div className="p-8">
+                <UpdateEvent eventID={id}/>
             </div>
 
         </div>        
