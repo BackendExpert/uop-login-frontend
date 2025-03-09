@@ -4,9 +4,12 @@ import DefultInput from '../../components/Forms/DefultInput'
 import FileInput from '../../components/Forms/FileInput'
 import DashTextArea from '../../components/Forms/DashTextArea'
 import Defaultbtn from '../../components/Button/Defaultbtn'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 
 const CreateNewEvent = () => {
+    const navigate = useNavigate()
     const [eventdata, seteventdata] = useState({
         envetName: '',
         eventImg: '',
@@ -40,7 +43,15 @@ const CreateNewEvent = () => {
         });
 
         try{
-            
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/event.php`, eventdata);
+
+            if(res.data.Status === "Success"){
+                alert("New Event Created Successfully")
+                navigate('/Dashboard/Events')
+            }
+            else{
+                alert(res.data.error || "Error White Create New Event");
+            }
         }
         catch(err){
             console.log(err)
