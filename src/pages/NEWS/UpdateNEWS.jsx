@@ -29,7 +29,7 @@ const UpdateNEWS = ({ NEWSid }) => {
         const file = e.target.files[0];
         setupdatenewsdata((prevData) => ({
             ...prevData,
-            eventImg: file,
+            newsImg: file,
         }));
     };
     

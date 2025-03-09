@@ -28,6 +28,32 @@ const CardDashboard = () => {
         });
     }, []);
 
+
+    // count NEWS
+
+    const [newsdata, setnewsdata] = useState([]);
+
+    const newscount = newsdata.length;
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/news.php', {
+            params: { action: "getallNEWS" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setnewsdata(res.data.Result);
+            } else {
+                setnewsdata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setnewsdata([]); 
+        });
+    }, []);
+
+
     const admindata = [
         {
             id: 1,
@@ -41,7 +67,7 @@ const CardDashboard = () => {
             id: 2,
             name: 'NEWS',
             icon: BsNewspaper,
-            value: 500,
+            value: newscount,
             bgstyle: 'bg-gradient-to-r from-[#4cdd94] to-[#55f397]'
         },
 
