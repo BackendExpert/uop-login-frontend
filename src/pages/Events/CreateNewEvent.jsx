@@ -11,8 +11,9 @@ import { useNavigate } from 'react-router-dom'
 const CreateNewEvent = () => {
     const navigate = useNavigate()
     const [eventdata, seteventdata] = useState({
+        action: 'createEvent',
         envetName: '',
-        eventImg: '',
+        eventImg: null,
         eventDesc: '',
         eventLink: '',
         eventDate: '',
@@ -28,7 +29,7 @@ const CreateNewEvent = () => {
     
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setroomdata((prevData) => ({
+        seteventdata((prevData) => ({
             ...prevData,
             image: file
         }));
@@ -43,7 +44,9 @@ const CreateNewEvent = () => {
         });
 
         try{
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}/event.php`, eventdata);
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/event.php`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+            });
 
             if(res.data.Status === "Success"){
                 alert("New Event Created Successfully")
