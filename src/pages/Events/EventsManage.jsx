@@ -1,7 +1,17 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
 import { BsCalendar3EventFill } from "react-icons/bs";
 
 const EventsManage = () => {
+    const [eventdata, setdataevet] = useState([])
+
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/event.php/' + {action: "getallenvets"})
+        .then(res => setdataevet(res.data.Result))
+        .catch(err => console.log(err))
+    }, [])
+
+    
   return (
     <div className='mt-4'>
         <div className="flex">
