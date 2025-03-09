@@ -10,6 +10,7 @@ import DashHome from "./pages/Dashboard/DashHome";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import EventsManage from "./pages/Events/EventsManage";
 import CreateNewEvent from "./pages/Events/CreateNewEvent";
+import ViewEvent from "./pages/Events/ViewEvent";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -65,6 +66,7 @@ export default function App() {
             <Route path="Home" element={<DashHome /> } />
             <Route path="Events" element={<EventsManage /> } />
             <Route path="CreateEvent" element={<CreateNewEvent /> } /> 
+            <Route path="ViewEvent/:id" element={<ViewEvent /> } />
           </Route>
         </Routes>
         {shouldShowFooter && <Footer />}

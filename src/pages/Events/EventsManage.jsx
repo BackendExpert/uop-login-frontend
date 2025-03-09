@@ -62,10 +62,10 @@ const EventsManage = () => {
                         Array.isArray(eventdata) && eventdata.length > 0 ? (
                             eventdata.map((event, index) => (
                                 <tr key={index} className='w-full h-16 text-center'>
-                                    <td>{index + 1}</td>
+                                    <td>{index + 1}</td>    
                                     <td>{event.event_title}</td>
                                     <td>{event.event_date}</td>
-                                    <td><button>Edit</button></td>
+                                    <td><a href={`/Dashboard/ViewEvent/${event.event_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
                                 </tr>
                             ))
                         ) : (
