@@ -34,8 +34,13 @@ const CreateNewEvent = () => {
     const headleCreateEvent = async (e) => {
         e.preventDefault()
 
-        try{
+        const formData = new FormData();
+        Object.keys(roomdata).forEach((key) => {
+            formData.append(key, roomdata[key]);
+        });
 
+        try{
+            
         }
         catch(err){
             console.log(err)
