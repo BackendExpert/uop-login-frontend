@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const CreateNewResearch = () => {
     const navigate = useNavigate();
     const [researchdata, setresearchdata] = useState({
-        action: 'createNEWS',
+        action: 'createResearch',
         resName: '',
         resImg: null,
         resDesc: '',
