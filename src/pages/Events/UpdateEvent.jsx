@@ -69,7 +69,6 @@ const UpdateEvent = ({ eventID }) => {
 
     return (
         <div>
-            <p className="">{eventID}</p>
             <form onSubmit={handleUpdateEvent} method="post">
                 <div className="grid grid-cols-2 gap-4">
                     <div>
