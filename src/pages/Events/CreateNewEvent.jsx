@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { BsPlus } from 'react-icons/bs'
 import DefultInput from '../../components/Forms/DefultInput'
 import FileInput from '../../components/Forms/FileInput'
+import DashTextArea from '../../components/Forms/DashTextArea'
+import Defaultbtn from '../../components/Button/Defaultbtn'
 
 
 const CreateNewEvent = () => {
@@ -10,7 +12,7 @@ const CreateNewEvent = () => {
         eventImg: '',
         eventDesc: '',
         eventLink: '',
-        eventData: '',
+        eventDate: '',
     })
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -28,6 +30,17 @@ const CreateNewEvent = () => {
             image: file
         }));
     };
+
+    const headleCreateEvent = async (e) => {
+        e.preventDefault()
+
+        try{
+
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
 
   return (
     <div className='mt-4'>
@@ -51,7 +64,7 @@ const CreateNewEvent = () => {
         </div>
 
         <div className="my-8">
-            <form method="post">
+            <form onSubmit={headleCreateEvent} method="post">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="">
                         <p className="">Event Name</p>
@@ -70,13 +83,61 @@ const CreateNewEvent = () => {
                         <p className="">Event Name</p>
                         <div className="mt-2">
                             <FileInput 
-                                name={'img'}
+                                name={'eventImg'}
                                 accept={'image/*'}
                                 required={true}
                                 onChange={handleImageChange}
                             />
                         </div>
                     </div>
+                </div>
+
+                <div className="mt-4">
+                    <p className="">Event Description</p>
+                    <DashTextArea 
+                        name={'eventDesc'}
+                        value={eventdata.eventDesc}
+                        required={true}
+                        placeholder={"Event Description"}
+                        onChange={handleInputChange}
+                    />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="">
+                        <p className="">Event Name</p>
+                        <div className="">
+                            <DefultInput 
+                                type={'link'}
+                                name={'eventLink'}
+                                value={eventdata.eventLink}
+                                onChange={handleInputChange}
+                                required={true}
+                                placeholder={"Event Link"}
+                            />
+                        </div>
+                    </div>
+
+                    <div className="">
+                        <p className="">Event Name</p>
+                        <div className="">
+                            <DefultInput 
+                                type={'date'}
+                                name={'eventDate'}
+                                value={eventdata.eventDate}
+                                onChange={handleInputChange}
+                                required={true}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="mt-8">
+                    <Defaultbtn 
+                        btnvalue={"Create New Event"}
+                        type={"Submit"}
+                    />
                 </div>
 
             </form>

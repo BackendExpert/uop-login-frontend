@@ -9,14 +9,14 @@ const DashTextArea = ({ name, value, placeholder, onChange, required }) => {
         required={!!required}
         onChange={onChange}
         className='
-            w-full
-            h-24
+            w-full h-28
+            pl-2 mt-2 pt-2
+            border border-gray-300
             rounded
-            pl-2 pt-2
-            duration-500
-            focus:outline-none focus:border-slate-400
-            focus:shadow
-            hover:border-slate-300            
+            duration-500 
+            focus:outline-none 
+            focus:border-[#560606]
+            placeholder:text-[#560606]       
         '
     ></textarea>
   )
