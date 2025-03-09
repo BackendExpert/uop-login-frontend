@@ -22,6 +22,21 @@ const EventsManage = () => {
                 </button>
             </a>
         </div>
+
+
+        <table className='w-full bg-white mt-4'>
+            <thead>
+                <tr className='h-12 w-full text-gray-500 border-b border-gray-200'>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+            </tbody>
+        </table>
     </div>
 
   )
