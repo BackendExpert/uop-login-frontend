@@ -6,12 +6,26 @@ const EventsManage = () => {
     const [eventdata, setdataevet] = useState([])
 
     useEffect(() => {
-        axios.get(import.meta.env.VITE_APP_API + '/event.php/' + {action: "getallenvets"})
-        .then(res => setdataevet(res.data.Result))
-        .catch(err => console.log(err))
-    }, [])
-
+        axios.get(import.meta.env.VITE_APP_API + '/event.php', {
+            params: { action: "getallEvents" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setdataevet(res.data.Result);
+            } else {
+                setdataevet([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setdataevet([]); 
+        });
+    }, []);
     
+
+
   return (
     <div className='mt-4'>
         <div className="flex">
@@ -44,7 +58,22 @@ const EventsManage = () => {
                 </tr>
             </thead>
             <tbody>
-                <tr></tr>
+            {
+                        Array.isArray(eventdata) && eventdata.length > 0 ? (
+                            eventdata.map((event, index) => (
+                                <tr key={index} className='w-full h-16 text-center'>
+                                    <td>{index + 1}</td>
+                                    <td>{event.event_title}</td>
+                                    <td>{event.event_date}</td>
+                                    <td><button>Edit</button></td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="4" className="text-center">No events available</td>
+                            </tr>
+                        )
+                    }
             </tbody>
         </table>
     </div>
