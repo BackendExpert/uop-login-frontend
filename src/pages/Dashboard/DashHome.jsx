@@ -7,7 +7,7 @@ const DashHome = () => {
     <div className='mt-4'>
         <div className="flex">
             <div className="">
-                <div className="inline-block p-2 bg-[#560606]">
+                <div className="inline-block p-2 bg-[#560606] rounded">
                     <BsFillGrid1X2Fill className='h-6 w-auto fill-white'/>
                 </div>
             </div>
