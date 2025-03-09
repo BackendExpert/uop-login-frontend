@@ -11,6 +11,8 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 import EventsManage from "./pages/Events/EventsManage";
 import CreateNewEvent from "./pages/Events/CreateNewEvent";
 import ViewEvent from "./pages/Events/ViewEvent";
+import NoticesManage from "./pages/Notices/NoticesManage";
+import CreateNewNotice from "./pages/Notices/CreateNewNotice";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -67,6 +69,8 @@ export default function App() {
             <Route path="Events" element={<EventsManage /> } />
             <Route path="CreateEvent" element={<CreateNewEvent /> } /> 
             <Route path="ViewEvent/:id" element={<ViewEvent /> } />
+            <Route path="Notice" element={<NoticesManage /> } />
+            <Route path="CreateNotice" element={<CreateNewNotice /> } />
           </Route>
         </Routes>
         {shouldShowFooter && <Footer />}
