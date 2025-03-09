@@ -30,7 +30,7 @@ const CreateNewResearch = () => {
         const file = e.target.files[0];
         setresearchdata((prevData) => ({
             ...prevData,
-            eventImg: file,
+            resImg: file,
         }));
     };
 

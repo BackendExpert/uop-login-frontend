@@ -54,6 +54,32 @@ const CardDashboard = () => {
     }, []);
 
 
+    // count Reseach data
+
+    const [resdata, setresdata] = useState([]);
+
+    const rescount = resdata.length;
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/research.php', {
+            params: { action: "getResearch" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setresdata(res.data.Result);
+            } else {
+                setresdata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setresdata([]); 
+        });
+    }, []);
+
+
+
     const admindata = [
         {
             id: 1,
@@ -75,7 +101,7 @@ const CardDashboard = () => {
             id: 3,
             name: 'Research',
             icon: BsJournalBookmarkFill,
-            value: 500,
+            value: rescount,
             bgstyle: 'bg-gradient-to-r from-[#fdbf6a] to-[#fedb7f]'
         },
 
@@ -98,7 +124,7 @@ const CardDashboard = () => {
                             <div className={`${data.bgstyle} text-white rounded-md shadow-xl py-8 px-4`} key={index}>
                                 <div className="flex justify-between">
                                     <div className="">
-                                        <h1 className="text-2xl">                                            
+                                        <h1 className="text-2xl font-semibold">                                            
                                             <CountUp end={data.value} duration={5}/> + 
                                         </h1>
                                         <h1 className="font-semibold">{data.name}</h1>

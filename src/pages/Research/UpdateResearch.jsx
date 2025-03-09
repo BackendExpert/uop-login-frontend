@@ -6,20 +6,20 @@ import Defaultbtn from '../../components/Button/Defaultbtn';
 import axios from 'axios';
 
 
-const UpdateNEWS = ({ NEWSid }) => {
-    const [updatenewsdata, setupdatenewsdata] = useState({
-        action: 'updateNEWS',
-        newsName: '',
-        newsImg: null,
-        newsDesc: '',
-        newsLink: '',
-        newsDate: '',
-        NEWSid: NEWSid, // Ensure eventID is correctly passed here
+const UpdateResearch = ({ ResID }) => {
+    const [updateresdata, setupdateresdata] = useState({
+        action: 'updateResearch',
+        resName: '',
+        resImg: null,
+        resDesc: '',
+        resLink: '',
+        resFaculty: '',
+        ResID: ResID, // Ensure eventID is correctly passed here
     });
     
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setupdatenewsdata((prevData) => ({
+        setupdateresdata((prevData) => ({
             ...prevData,
             [name]: value,
         }));
@@ -27,34 +27,34 @@ const UpdateNEWS = ({ NEWSid }) => {
     
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setupdatenewsdata((prevData) => ({
+        setupdateresdata((prevData) => ({
             ...prevData,
-            newsImg: file,
+            resImg: file,
         }));
     };
     
-    const headleUpdateNEWS = async (e) => {
+    const headleUpdateResearch = async (e) => {
         e.preventDefault();
         const formData = new FormData();
     
         // Append all fields including eventID
-        Object.keys(updatenewsdata).forEach((key) => {
-            if (key === "eventImg" && updatenewsdata[key]) {
-                formData.append(key, updatenewsdata[key]);
+        Object.keys(updateresdata).forEach((key) => {
+            if (key === "eventImg" && updateresdata[key]) {
+                formData.append(key, updateresdata[key]);
             } else {
-                formData.append(key, updatenewsdata[key]);
+                formData.append(key, updateresdata[key]);
             }
         });
     
         try {
-            const res = await axios.post(`${import.meta.env.VITE_APP_API}/news.php`, formData, {
+            const res = await axios.post(`${import.meta.env.VITE_APP_API}/research.php`, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
     
             console.log("Server Response:", res.data); // Detailed log
     
             if (res.data.Status === "Success") {
-                alert("NEWS Updated Successfully");
+                alert("Research Updated Successfully");
                 window.location.reload();
             } else {
                 console.error("Error Details:", res.data); // Detailed error log
@@ -69,22 +69,22 @@ const UpdateNEWS = ({ NEWSid }) => {
 
     return (
         <div>
-            <form onSubmit={headleUpdateNEWS} method="post">
+            <form onSubmit={headleUpdateResearch} method="post">
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <p>NEWS Name</p>
+                        <p>Research Name</p>
                         <DefultInput
                             type="text"
-                            name="newsName"
-                            value={updatenewsdata.newsName}
+                            name="resName"
+                            value={updateresdata.resName}
                             onChange={handleInputChange}                            
-                            placeholder="NEWS Name"
+                            placeholder="Research Name"
                         />
                     </div>
                     <div>
-                        <p className='mb-2'>NEWS Image</p>
+                        <p className='mb-2'>Research Image</p>
                         <FileInput
-                            name="newsImg"
+                            name="resImg"
                             accept="image/*"                            
                             onChange={handleImageChange}
                         />
@@ -92,10 +92,10 @@ const UpdateNEWS = ({ NEWSid }) => {
                 </div>
 
                 <div className="mt-4">
-                    <p>NEWS Description</p>
+                    <p>Research Description</p>
                     <DashTextArea
-                        name="newsDesc"
-                        value={updatenewsdata.newsDesc}                        
+                        name="resDesc"
+                        value={updateresdata.resDesc}                        
                         placeholder="NEWS Description"
                         onChange={handleInputChange}
                     />
@@ -104,21 +104,21 @@ const UpdateNEWS = ({ NEWSid }) => {
 
                 <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <p>NEWS Link</p>
+                        <p>Research Link</p>
                         <DefultInput
                             type="text"
-                            name="newsLink"
-                            value={updatenewsdata.newsLink}
+                            name="resLink"
+                            value={updateresdata.resLink}
                             onChange={handleInputChange}                            
-                            placeholder="NEWS Link"
+                            placeholder="Research Link"
                         />
                     </div>
                     <div>
-                        <p>NEWS Date</p>
+                        <p>Research Date</p>
                         <DefultInput
-                            type="date"
-                            name="newsDate"
-                            value={updatenewsdata.newsDate}
+                            type="text"
+                            name="resFaculty"
+                            value={updateresdata.resFaculty}
                             onChange={handleInputChange}                            
                         />
                     </div>
@@ -126,7 +126,7 @@ const UpdateNEWS = ({ NEWSid }) => {
 
                 <div className="mt-8">
                     <Defaultbtn
-                        btnvalue="Update NEWS Data"
+                        btnvalue="Update Research Data"
                         type="Submit"
                     />
                 </div>
@@ -135,4 +135,4 @@ const UpdateNEWS = ({ NEWSid }) => {
     )
 }
 
-export default UpdateNEWS
+export default UpdateResearch

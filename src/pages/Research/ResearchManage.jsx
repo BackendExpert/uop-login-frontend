@@ -3,26 +3,26 @@ import React, { useEffect, useState } from 'react'
 import { BsCalendar3EventFill, BsJournalBookmarkFill, BsNewspaper } from "react-icons/bs";
 
 const ResearchManage = () => {
-    // const [eventdata, setdataevet] = useState([])
+    const [researchdata, setresearchdata] = useState([])
 
-    // useEffect(() => {
-    //     axios.get(import.meta.env.VITE_APP_API + '/event.php', {
-    //         params: { action: "getallEvents" },  
-    //         headers: { 'Content-Type': 'multipart/form-data' },
-    //     })
-    //     .then(res => {
-    //         console.log(res.data);
-    //         if (res.data.Result) {
-    //             setdataevet(res.data.Result);
-    //         } else {
-    //             setdataevet([]);  
-    //         }
-    //     })
-    //     .catch(err => {
-    //         console.log(err);
-    //         setdataevet([]); 
-    //     });
-    // }, []);
+    useEffect(() => {
+        axios.get(import.meta.env.VITE_APP_API + '/research.php', {
+            params: { action: "getResearch" },  
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        .then(res => {
+            console.log(res.data);
+            if (res.data.Result) {
+                setresearchdata(res.data.Result);
+            } else {
+                setresearchdata([]);  
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            setdataevet([]); 
+        });
+    }, []);
     
 
 
@@ -53,19 +53,19 @@ const ResearchManage = () => {
                 <tr className='h-12 w-full text-gray-500 border-b border-gray-200'>
                     <th>#</th>
                     <th>Title</th>
-                    <th>Date</th>
+                    <th>Faculty</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-            {/* {
-                        Array.isArray(eventdata) && eventdata.length > 0 ? (
-                            eventdata.map((event, index) => (
+            {
+                        Array.isArray(researchdata) && researchdata.length > 0 ? (
+                            researchdata.map((research, index) => (
                                 <tr key={index} className='w-full h-16 text-center'>
                                     <td>{index + 1}</td>    
-                                    <td>{event.event_title}</td>
-                                    <td>{event.event_date}</td>
-                                    <td><a href={`/Dashboard/ViewEvent/${event.event_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
+                                    <td>{research.res_titile}</td>
+                                    <td>{research.res_faculty}</td>
+                                    <td><a href={`/Dashboard/ViewResearch/${research.research_id}`}><button className='text-[#560606] font-semibold'>Edit</button></a></td>
                                 </tr>
                             ))
                         ) : (
@@ -73,7 +73,7 @@ const ResearchManage = () => {
                                 <td colSpan="4" className="text-center">No events available</td>
                             </tr>
                         )
-                    } */}
+                    }
             </tbody>
         </table>
     </div>
