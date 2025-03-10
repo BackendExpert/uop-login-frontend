@@ -82,7 +82,7 @@ const CreateNewResearch = () => {
             </div>
 
             <div className="mt-4">
-                <a href="/Dashboard/NEWS">
+                <a href="/Dashboard/Research">
                     <button className="bg-gradient-to-r from-[#ff7e60] to-[#ffc27c] px-8 py-2 text-white rounded duration-500">
                         Back
                     </button>
