@@ -1,4 +1,6 @@
 import { BsCalendar3EventFill , BsMegaphoneFill, BsNewspaper, BsJournalBookmarkFill, BsFillGrid1X2Fill  } from "react-icons/bs";
+import { FaImages } from "react-icons/fa6";
+import { MdEventNote } from "react-icons/md";
 
 const sidemenu = [
     {
@@ -29,6 +31,18 @@ const sidemenu = [
         id: 5,
         name: "Research Management",
         icon: BsJournalBookmarkFill,
+        link: '/Dashboard/Research'
+    },
+    {
+        id: 6,
+        name: "Home Image Management",
+        icon: FaImages,
+        link: '/Dashboard/Research'
+    },
+    {
+        id: 7,
+        name: "Latest Programme Management",
+        icon: MdEventNote,
         link: '/Dashboard/Research'
     },
 ]
