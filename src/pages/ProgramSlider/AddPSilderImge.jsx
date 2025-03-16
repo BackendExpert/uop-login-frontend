@@ -112,7 +112,7 @@ const AddPSilderImge = () => {
                     <div className="mt-4">
                         <p>Programme Slider Description</p>
                         <DashTextArea
-                            name="hidesc"
+                            name="pdesc"
                             value={pdataimge.pdesc}
                             required
                             placeholder="Programme Description"
