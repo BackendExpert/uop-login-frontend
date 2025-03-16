@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaImages } from "react-icons/fa";
+import Defaultbtn from '../../components/Button/Defaultbtn';
 
 
 const HSliderImg = () => {
@@ -23,6 +24,20 @@ const HSliderImg = () => {
                 setimagedata([]);
             });
     }, []);
+
+    const headleDelete = async (id) => {
+        const res = await axios.post(import.meta.env.VITE_APP_API + '/homeimge.php', {
+            params: { action: "getallImages", Imgeid: id },
+            headers: { 'Content-Type': 'multipart/form-data' },
+        })
+        if(res.data.Status === "Success"){
+            alert("Image Deleted Success")
+            window.location.reload()
+        }
+        else{
+            alert(res.data.Error)
+        }
+    }
     return (
         <div className='mt-4'>
             <div className="flex">
@@ -50,12 +65,17 @@ const HSliderImg = () => {
                             <div className="bg-white p-4 rounded shadow-md my-4" key={index}>
                                 <div className="flex">
                                     <div className="">
-                                        <img src={`${import.meta.env.VITE_APP_API}/${image.img}`} alt="" className='rounded-xl h-28 w-auto'/>
+                                        <img src={`${import.meta.env.VITE_APP_API}/${image.img}`} alt="" className='rounded-xl h-28 w-auto' />
                                     </div>
                                     <div className="ml-4">
                                         <h1 className="text-xl font-semibold">{image.title}</h1>
                                         <p className="pt-2">{image.imgdesc}</p>
                                     </div>
+                                </div>
+                                <div className="">
+                                    <button onClick={() => headleDelete(image.id)} className='bg-red-500 text-white py-2 px-4 rounded mt-4'>
+                                        Delete
+                                    </button>
                                 </div>
                             </div>
                         )
