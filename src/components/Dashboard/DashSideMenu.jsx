@@ -37,7 +37,7 @@ const sidemenu = [
         id: 6,
         name: "Home Image Management",
         icon: FaImages,
-        link: '/Dashboard/Research'
+        link: '/Dashboard/HSliderImg'
     },
     {
         id: 7,
