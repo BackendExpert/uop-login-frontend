@@ -47,7 +47,7 @@ const HSliderImg = () => {
                 {
                     imagedata.map((image, index) => {
                         return (
-                            <div className="bg-white p-4 rounded shadow-md" key={index}>
+                            <div className="bg-white p-4 rounded shadow-md my-4" key={index}>
                                 <div className="flex">
                                     <div className="">
                                         <img src={`${import.meta.env.VITE_APP_API}/${image.img}`} alt="" className='rounded-xl h-28 w-auto'/>
