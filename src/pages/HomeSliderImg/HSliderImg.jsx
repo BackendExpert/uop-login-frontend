@@ -25,7 +25,7 @@ const HSliderImg = () => {
 
     const headleDelete = async (id) => {
         const res = await axios.post(import.meta.env.VITE_APP_API + '/homeimge.php', {
-            params: { action: "getallImages", Imgeid: id },
+            params: { action: "deleteimg", Imgeid: id },
             headers: { 'Content-Type': 'multipart/form-data' },
         })
         if(res.data.Status === "Success"){
