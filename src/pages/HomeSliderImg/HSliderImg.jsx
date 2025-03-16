@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { FaImages } from "react-icons/fa";
-import Defaultbtn from '../../components/Button/Defaultbtn';
-
 
 const HSliderImg = () => {
     const [imagedata, setimagedata] = useState([])
