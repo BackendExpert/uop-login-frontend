@@ -43,7 +43,7 @@ const sidemenu = [
         id: 7,
         name: "Latest Programme Management",
         icon: MdEventNote,
-        link: '/Dashboard/Research'
+        link: '/Dashboard/ProgramSlider'
     },
 ]
 
