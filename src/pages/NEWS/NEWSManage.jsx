@@ -24,7 +24,28 @@ const NEWSManage = () => {
             });
     }, []);
 
+    const headleDelete = async (id) => {
+        console.log(id)
+        const formData = new FormData();
+        formData.append("action", "deletenews");
+        formData.append("Imgeid", id);
 
+        try {
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/news.php', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+
+            if (res.data.Status === "Success") {
+                alert("Image Deleted Successfully");
+                window.location.reload();
+            } else {
+                alert(res.data.error || "An error occurred");
+            }
+        } catch (error) {
+            console.error("Delete request failed:", error);
+            alert("Failed to delete image");
+        }
+    }
 
     return (
         <div className='mt-4'>
@@ -66,7 +87,7 @@ const NEWSManage = () => {
                                     <td>{news.news_title}</td>
                                     <td>{news.news_date}</td>
                                     <td>
-                                        <a href={`/Dashboard/ViewNEWS/${news.id}`}><button className='mr-2 text-red-500 font-semibold'>Delete</button></a>
+                                        <button className='mr-2 text-red-500 font-semibold' onClick={() => headleDelete(news.id)}>Delete</button>
                                         <a href={`/Dashboard/ViewNEWS/${news.id}`}><button className='text-[#560606] font-semibold'>Edit</button></a>
                                     </td>
                                 </tr>
