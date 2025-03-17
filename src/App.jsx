@@ -24,6 +24,8 @@ import HSliderImg from "./pages/HomeSliderImg/HSliderImg";
 import AddImage from "./pages/HomeSliderImg/AddImage";
 import ProgramSlider from "./pages/ProgramSlider/ProgramSlider";
 import AddPSilderImge from "./pages/ProgramSlider/AddPSilderImge";
+import UpdateHImge from "./pages/HomeSliderImg/UpdateHImge";
+import UpdatePSlider from "./pages/ProgramSlider/UpdatePSlider";
 
 export default function App() {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -90,9 +92,11 @@ export default function App() {
             <Route path="ViewResearch/:id" element={<ViewResearch /> } />
             <Route path="CreateResearch" element={<CreateNewResearch /> } />
             <Route path="HSliderImg" element={<HSliderImg /> } />
+            <Route path="UpdateHImage/:id" element={<UpdateHImge /> } />
             <Route path="AddImage" element={<AddImage /> } />
             <Route path="ProgramSlider" element={<ProgramSlider /> } />
             <Route path="AddPSilderImge" element={<AddPSilderImge /> } />
+            <Route path="UpdatePSlider/:id" element={<UpdatePSlider /> } />
           </Route>
          </Routes>
         {shouldShowFooter && <Footer />}

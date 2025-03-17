@@ -45,7 +45,7 @@ const ProgramSlider = () => {
             alert("Failed to delete image");
         }
     }
-    
+
     return (
         <div className='mt-4'>
             <div className="flex">
@@ -83,6 +83,11 @@ const ProgramSlider = () => {
                                     <button onClick={() => headleDelete(image.id)} className='bg-red-500 text-white py-2 px-4 rounded mt-4'>
                                         Delete
                                     </button>
+                                    <a href={`/Dashboard/UpdatePSlider/${image.id}`}>
+                                        <button className='ml-2 bg-blue-500 text-white py-2 px-4 rounded mt-4'>
+                                            Edit
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         )
