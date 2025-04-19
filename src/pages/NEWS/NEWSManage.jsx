@@ -116,9 +116,9 @@ const NEWSManage = () => {
                                     <td>
                                         {
                                             RoleUser === "dvc" ? (
-                                                Number(news.is_active) === 0 ? (
+                                                Number(news.is_active) === 1 ? (
                                                     <div  className='mr-2 text-white rounded py-1 bg-green-500 font-semibold'>Accepted</div>
-                                                ) : Number(news.is_active) === 1 ? (
+                                                ) : Number(news.is_active) === 0 ? (
                                                     <div className='mr-2 text-white rounded py-1 bg-red-500 font-semibold'>Refused</div>
                                                 ) : null
                                             ) : null
