@@ -1,9 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BsCalendar3EventFill, BsNewspaper } from "react-icons/bs";
+import secureLocalStorage from "react-secure-storage";
 
 const NEWSManage = () => {
     const [newsdata, setnewsdata] = useState([])
+    const EmailUser = secureLocalStorage.getItem("email");
+    const RoleUser = secureLocalStorage.getItem("role");
+    const UserName = secureLocalStorage.getItem("username");
 
     useEffect(() => {
         axios.get(import.meta.env.VITE_APP_API + '/news.php', {
@@ -37,6 +41,29 @@ const NEWSManage = () => {
 
             if (res.data.Status === "Success") {
                 alert("Image Deleted Successfully");
+                window.location.reload();
+            } else {
+                alert(res.data.error || "An error occurred");
+            }
+        } catch (error) {
+            console.error("Delete request failed:", error);
+            alert("Failed to delete image");
+        }
+    }
+
+    const headleAcceptandRefuse = async (value) => {
+        console.log(id)
+        const formData = new FormData();
+        formData.append("action", "acceptorrefuse");
+        formData.append("newsID", id);
+
+        try {
+            const res = await axios.post(import.meta.env.VITE_APP_API + '/news.php', formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+            });
+
+            if (res.data.Status === "Success") {
+                alert("News Updated Success");
                 window.location.reload();
             } else {
                 alert(res.data.error || "An error occurred");
@@ -87,6 +114,15 @@ const NEWSManage = () => {
                                     <td>{news.news_title}</td>
                                     <td>{news.news_date}</td>
                                     <td>
+                                        {
+                                            RoleUser === "dvc" ? (
+                                                Number(news.is_active) === 0 ? (
+                                                    <button onClick={() => headleAcceptandRefuse(news.id)} className='mr-2 text-green-500 font-semibold'>Accept</button>
+                                                ) : Number(news.is_active) === 1 ? (
+                                                    <button onClick={() => headleAcceptandRefuse(news.id)} className='mr-2 text-red-500 font-semibold'>Refuse</button>
+                                                ) : null
+                                            ) : null
+                                        }
                                         <button className='mr-2 text-red-500 font-semibold' onClick={() => headleDelete(news.id)}>Delete</button>
                                         <a href={`/Dashboard/ViewNEWS/${news.id}`}><button className='text-[#560606] font-semibold'>Edit</button></a>
                                     </td>
