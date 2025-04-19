@@ -9,6 +9,8 @@ import { FaHotel } from "react-icons/fa6";
 
 const DashSide = () => {
   const EmailUser = secureLocalStorage.getItem("email");
+  const RoleUser = secureLocalStorage.getItem("role");
+  const UserName = secureLocalStorage.getItem("username");
 
   const currentID = localStorage.getItem("dashmenuID") || "";
 
@@ -48,7 +50,7 @@ const DashSide = () => {
         </div>
         <div className="mt-4 pl-4">
           <h1 className="text-sm uppercase font-semibold text-[#560606]">
-            admin
+            {RoleUser}
           </h1>
         </div>
       </div>

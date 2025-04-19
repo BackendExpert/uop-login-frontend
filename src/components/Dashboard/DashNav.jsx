@@ -7,6 +7,8 @@ import userImg from '../../assets/user.png'
 
 const DashNav = () => {
     const EmailUser = secureLocalStorage.getItem('email')
+    const RoleUser = secureLocalStorage.getItem("role");
+    const UserName = secureLocalStorage.getItem("username");
 
     const [menu, setmenu] = useState(false)
     
@@ -47,7 +49,7 @@ const DashNav = () => {
                         className="h-8 w-auto rounded-full" 
                     /> */}
                     <div className="flex pl-4 pt-1 uppercase text-[#560606]">
-                        admin
+                        {UserName}
 
                         <div className="pl-1 pt-1">
                             {

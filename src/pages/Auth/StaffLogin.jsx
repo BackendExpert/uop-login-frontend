@@ -31,6 +31,8 @@ const StaffLogin = () => {
                 alert(res.data.message);
                 localStorage.setItem("login", res.data.token);
                 secureLocalStorage.setItem("email", res.data.email);
+                secureLocalStorage.setItem("role", res.data.role);
+                secureLocalStorage.setItem("username", res.data.username);
                 localStorage.setItem("dashmenuID", 1);
                 navigate('/Dashboard/home');
                 window.location.reload();
