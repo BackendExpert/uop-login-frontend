@@ -52,10 +52,10 @@ const NEWSManage = () => {
     }
 
     const headleAcceptandRefuse = async (value) => {
-        console.log(id)
+        console.log(value)
         const formData = new FormData();
         formData.append("action", "acceptorrefuse");
-        formData.append("newsID", id);
+        formData.append("newsID", value);
 
         try {
             const res = await axios.post(import.meta.env.VITE_APP_API + '/news.php', formData, {
@@ -114,6 +114,16 @@ const NEWSManage = () => {
                                     <td>{news.news_title}</td>
                                     <td>{news.news_date}</td>
                                     <td>
+                                        {
+                                            RoleUser === "dvc" ? (
+                                                Number(news.is_active) === 0 ? (
+                                                    <div  className='mr-2 text-white rounded py-1 bg-green-500 font-semibold'>Accepted</div>
+                                                ) : Number(news.is_active) === 1 ? (
+                                                    <div className='mr-2 text-white rounded py-1 bg-red-500 font-semibold'>Refused</div>
+                                                ) : null
+                                            ) : null
+                                        }
+
                                         {
                                             RoleUser === "dvc" ? (
                                                 Number(news.is_active) === 0 ? (
